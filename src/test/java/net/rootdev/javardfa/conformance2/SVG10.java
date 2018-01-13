@@ -21,7 +21,7 @@ public class SVG10 extends RDFaConformance
     public static Collection<String[]> testFiles()
             throws URISyntaxException, IOException {
         return RDFaConformance.
-                testFiles("http://rdfa.info/test-suite/rdfa1.0/svg/manifest",
+              testFiles( testPrefix + "/rdfa1.0/svg/manifest.ttl",
                 "conformance2/manifest-extract.rq",
                 // Not an RDFa test!
                 "http://rdfa.info/test-suite/rdfa1.0/svg/0304"

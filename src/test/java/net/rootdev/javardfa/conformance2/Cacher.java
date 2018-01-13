@@ -30,14 +30,16 @@ public class Cacher {
     final static Logger log = LoggerFactory.getLogger(Cacher.class);
     
     final static String CACHED = "//////CACHED/////";
-    
+
+    final static String testPrefix = "http://rdfa.info/test-suite/test-cases";
+
     public static void main(String... args) {
         RIOT.init();
         Cacher c = new Cacher("src/test/resources/", false);
-        c.cacheManifest("http://rdfa.info/test-suite/rdfa1.0/svg/manifest");
-        c.cacheManifest("http://rdfa.info/test-suite/rdfa1.0/xhtml/manifest");
-        c.cacheManifest("http://rdfa.info/test-suite/rdfa1.0/xml/manifest");
-        c.cacheManifest("http://rdfa.info/test-suite/rdfa1.1/xml/manifest");
+        c.cacheManifest( testPrefix + "/svg/manifest.ttl");
+        c.cacheManifest( testPrefix + "/rdfa1.0/xhtml1/manifest.ttl");
+        c.cacheManifest( testPrefix + "/rdfa1.0/xml/manifest.ttl");
+        c.cacheManifest( testPrefix + "/test-suite/rdfa1.1/xml/manifest.ttl");
     }
     
     private final LocationMapper lm;

@@ -22,11 +22,11 @@ public class XML11 extends RDFaConformance
     public static Collection<String[]> testFiles()
             throws URISyntaxException, IOException {
         if (false) return RDFaConformance.filterTests(RDFaConformance.
-                testFiles("http://rdfa.info/test-suite/rdfa1.1/xml/manifest",
+                testFiles(testPrefix + "/rdfa1.1/xml/manifest.tll",
                 "conformance2/manifest-extract-1.1.rq"
                 ), 120);
         return RDFaConformance.
-                testFiles("http://rdfa.info/test-suite/rdfa1.1/xml/manifest",
+                testFiles(testPrefix + "/rdfa1.1/xml/manifest.ttl",
                 "conformance2/manifest-extract-1.1.rq"
                 );
     }

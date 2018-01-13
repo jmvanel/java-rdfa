@@ -21,7 +21,7 @@ public class XML10 extends RDFaConformance
     public static Collection<String[]> testFiles()
             throws URISyntaxException, IOException {
         return RDFaConformance.
-                testFiles("http://rdfa.info/test-suite/rdfa1.0/xml/manifest",
+                testFiles( testPrefix + "/rdfa1.0/xml/manifest.ttl",
                     "conformance2/manifest-extract.rq",
                     // Exclude: test uses html base outside html. Badly migrated, I guess.
                     "http://rdfa.info/test-suite/rdfa1.0/xml/0210",

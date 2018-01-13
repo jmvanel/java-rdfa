@@ -9,19 +9,20 @@ import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
-import org.apache.jena.query.QueryParseException;
+//import org.apache.jena.query.QueryParseException;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.RIOT;
 import org.apache.jena.util.FileManager;
+import org.apache.jena.riot.Lang;
+import org.apache.jena.riot.RDFDataMgr;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,13 +30,14 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
+//import org.junit.runners.Parameterized.Parameters;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
+//import org.apache.jena.riot.Lang;
 
 /**
  * @author Damian Steer <pldms@mac.com>
@@ -44,6 +46,7 @@ import org.xml.sax.XMLReader;
 public abstract class RDFaConformance {
 
     final static Logger log = LoggerFactory.getLogger(RDFaConformance.class);
+    final static String testPrefix = "http://rdfa.info/test-suite/test-cases";
 
     static {
         RIOT.init();
@@ -59,11 +62,9 @@ public abstract class RDFaConformance {
     public static List<String[]> testFiles(String manifestURI, String extractQuery, String... excludes)
             throws URISyntaxException, IOException {
 
-        Set<String> toExclude = new HashSet(Arrays.asList(excludes));
+        Set<String> toExclude = new HashSet<String>(Arrays.asList(excludes));
 
-        FileManager fm = FileManager.get();
-
-        Model manifest = fm.loadModel(manifestURI, "TTL");
+        Model manifest = RDFDataMgr.loadModel( manifestURI, Lang.TURTLE );
 
         Query manifestExtract = QueryFactory.read(extractQuery);
 
@@ -102,7 +103,7 @@ public abstract class RDFaConformance {
     }
     private final String test;
     private final String title;
-    private final String purpose;
+//    private final String purpose;
     private final String input;
     private final String query;
     private final boolean expected;
@@ -111,7 +112,7 @@ public abstract class RDFaConformance {
             String purpose, String input, String query, String expected) {
         this.test = test;
         this.title = title;
-        this.purpose = purpose;
+//        this.purpose = purpose;
         this.input = input;
         this.query = query;
         this.expected = Boolean.valueOf(expected);
