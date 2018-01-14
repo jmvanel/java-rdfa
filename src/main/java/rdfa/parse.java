@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
 import net.rootdev.javardfa.Version;
+//import net.rootdev.javardfa.jena.RDFaReader;
 
 /**
  * Simple command line tool. Uses Jena, and doesn't stream, so output
@@ -27,7 +28,7 @@ public class parse {
         if ("--version".equals(args[0]) || "-v".equals(args[0])) version();
 
         // Ensure hooks run
-        Class.forName("net.rootdev.javardfa.RDFaReader");
+        Class.forName("net.rootdev.javardfa.jena.RDFaReader");
 
         String format = "XHTML";
         boolean getFormat = false;
