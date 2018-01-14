@@ -113,18 +113,14 @@ public abstract class RDFaConformanceGoldenResult {
         if (hf.matches("file:/[^/][^/].*")) hf = hf.replaceFirst("file:/", "file:///");
 
         Model modelGoldenResult = RDFDataMgr.loadModel(compareURL.toExternalForm());
-//        System.out.println("After modelGoldenResult");
         Model modelFromHTML = ModelFactory.createDefaultModel();
         StatementSink sink = new JenaStatementSink(modelFromHTML);
         XMLReader parser = ParserFactory.createReaderForFormat(sink, Format.XHTML, Setting.OnePointOne);
         // to avoid HTTP 403 from server; alternatively maybe set agent on the URL connection
         System.setProperty("http.agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36     (KHTML, like Gecko) Chrome/28.0.1500.29 Safari/537.36");
         parser.parse(hf);
-//        System.out.println("After modelFromHTML");
 
-//        boolean result = modelGoldenResult.isIsomorphicWith(modelFromHTML);
-        // do not use isIsomorphicWith() to account for rdfa:useVocab extra triple
-        boolean result = modelFromHTML.containsAll(modelGoldenResult);
+        boolean result = modelGoldenResult.isIsomorphicWith(modelFromHTML);
         if( !result) {
         	System.err.println("TEST FAILURE " + htmlURL + " => print Graph obtained");
         	modelFromHTML.write(System.err, "TTL");
