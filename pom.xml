@@ -200,6 +200,7 @@
    <type>pom</type>
 			<version>${org.apache.jena.version}</version>
 </dependency>
+<!--
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -212,6 +213,7 @@
 			<version>1.5.6</version>
 			<scope>provided</scope>
 		</dependency>
+-->
 		<dependency>
 			<groupId>net.rootdev</groupId>
 			<artifactId>java-rdfa-htmlparser</artifactId>
