@@ -93,6 +93,16 @@ There is a secret form mode (that prompted the development of this parser). In t
 [Simple example](http://github.com/shellac/java-rdfa/tree/master/src/test/resources/query-tests/1.html)
 (from the tests) and the [query](http://github.com/shellac/java-rdfa/tree/master/src/test/resources/query-tests/1.rq) that results.
 
+Build
+-----
+
+    cd sesame-module
+    mvn  -DskipTests=true -Dmaven.javadoc.skip=true install
+    cd ../java-rdfa-parent
+    mvn  -DskipTests=true -Dmaven.javadoc.skip=true install
+    cd ..
+    mvn -DskipTests=true -Dmaven.javadoc.skip=true install
+
 Changes
 -------
 
